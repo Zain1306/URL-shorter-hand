@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 
 
 // Basic Configuration
-const port = 3000;
+
 
 async function conndb()
 {
