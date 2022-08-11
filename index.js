@@ -1,8 +1,24 @@
 require('dotenv').config();
+var mongoose = require('mongoose');
 const express = require('express');
 const cors = require('cors');
 const app = express();
 
+async function conndb()
+{
+  try {
+    await mongoose.connect(process.env.PORT, {useNewUrlParser: true, useUnifiedTopology: true});
+//Get the default connection
+var db  = await mongoose.connection;
+console.log("Database connected succsefully");
+  } catch (error) {
+    db.on('error', console.error.bind(console, 'MongoDB connection error:')); 
+  }
+
+//Bind connection to error event (to get notification of connection errors)
+}
+
+console.log(conndb());
 // Basic Configuration
 const port = process.env.PORT || 3000;
 
